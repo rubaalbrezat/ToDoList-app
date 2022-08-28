@@ -1,29 +1,38 @@
 import React, { Component } from 'react'
 
+
 export class Additem extends Component {
-	state ={
-		name :'',
-		age : ''
+	state = {
+		name: '',
+		age: ''
 
 	}
 
-	handleChange =(e) =>{
+	handleChange = (e) => {
 		this.setState({
-			[e.target.id] : e. target.value
+			[e.target.id]: e.target.value
 		})
 	}
 
-      handelSubmit =(e) => {
+	handelSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.state)
-	  }
+		if (e.target.name.value === ''){
+			return false
+		}else{
+			this.props.addItem(this.state)
+			this.setState({
+				name: '',
+				age: ''
+			})
+		}
+	}
 	
 	render() {
 		return (
 			<div>
 				<form onSubmit={this.handelSubmit}>
-					<input type="text" placeholder="Enter name... " id="name" onChange={this.handleChange} />
-					<input type="number" placeholder="Enter age... " id="age" onChange={this.handleChange} />
+					<input type="text" placeholder="Enter name... " id="name" onChange={this.handleChange} value={this.state.name} />
+					<input type="number" placeholder="Enter age... " id="age" onChange={this.handleChange} value={this.state.age} />
 					<input type="submit" value="Add" />
 
 

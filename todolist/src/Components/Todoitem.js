@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const Todoitem =(props) => {
 	const {items , deleteItem} = props;
 	let length = items.length;
@@ -8,9 +9,9 @@ const Todoitem =(props) => {
 		items.map(item => {
 			return(
 				<div key={item.id}>
-					<span>{item.name}</span>
-					<span>{item.age}</span>
-					 <span onClick={() => deleteItem(item.id)}>&times;</span> 
+					<span className="name">{item.name}</span>
+					<span className="age">{item.age}</span>
+					 <span className="action icon" onClick={() => deleteItem(item.id)}>&times;</span> 
 				</div>
 			)
 		})
@@ -19,11 +20,11 @@ const Todoitem =(props) => {
 	)
 
 	return(
-		<div>
-			<div className="ListItems">
-				<span>Name</span>
-				<span>Age</span>
-				<span>Action</span>
+		<div className='listItems'>
+			<div >
+				<span className="name title">Name</span>
+				<span className="age title">Age</span>
+				<span className="action title">Action</span>
 			</div>
 			{ListItems}
 		</div>

@@ -4,6 +4,7 @@ import Todoitem from './Components/Todoitem'
 
 
 
+
 export class App extends Component {
 	state = {
 		items: [
@@ -22,17 +23,24 @@ export class App extends Component {
 			{ items }
 		)
 	}
-  
-	
+
+	addItem = (item) => {
+		item.id = Math.random();
+		let items = this.state.items;
+		items.push(item);
+		this.setState({ items })
+	}
 
 	render() {
 		return (
-			<div className='App'>
-				Todo list app
-				<Todoitem items={this.state.items} deleteItem={this.deleteItem} />
-				<Additem />
+			
+				<div className='App container'>
+					<h1 className='text-center'>Todo list app</h1>
+					<Todoitem items={this.state.items} deleteItem={this.deleteItem} />
+					<Additem addItem={this.addItem} />
 
-			</div>
+				</div>
+			
 		)
 	}
 }
